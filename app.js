@@ -67,6 +67,19 @@ class LinkedList {
         tempNode.nextNode = null;
 
     }
+
+    contains(value) {
+        this.isEmpty();
+        let tempNode = this.head;
+        if (tempNode.data == value) return true;
+        while (tempNode.nextNode != null) {
+            tempNode = tempNode.nextNode;
+            if (tempNode.data == value) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 class Node {
@@ -81,4 +94,4 @@ l1.addFirst('ke');
 l1.addLast('kek');
 l1.addLast('cke');
 l1.pop();
-console.log(l1.getFirst());
+console.log(l1.contains("cke"));
