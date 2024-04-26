@@ -9,7 +9,7 @@ class LinkedList {
 
     getFirst() {
         if (this.head == null) {
-            console.log("List is empty");
+            return "List is empty";
         } else {
             return this.head;
         }
@@ -49,6 +49,14 @@ class LinkedList {
             return size;
         }
     }
+
+    at(index) {
+        if (this.head == null) return "List is empty";
+        let tempNode = this.head;
+        for (let i = 0; i < index; i++) tempNode = tempNode.nextNode;
+        if (tempNode == null) return "Out of Bounds";
+        return tempNode;
+    }
 }
 
 class Node {
@@ -62,4 +70,4 @@ let l1 = new LinkedList();
 l1.addFirst('ke');
 l1.addLast('kek');
 l1.addLast('cke');
-console.log(l1.getSize());
+console.log(l1.at(1));
