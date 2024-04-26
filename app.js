@@ -80,6 +80,19 @@ class LinkedList {
         }
         return false;
     }
+
+    find(value) {
+        if (this.contains(value)) {
+            let tempNode = this.head;
+            if (tempNode.data == value) return tempNode;
+            while (tempNode.nextNode != null) {
+                tempNode = tempNode.nextNode;
+                if (tempNode.data == value) return tempNode;
+            }
+        } else {
+            return "There is no such a Node with the given value: " + value;
+        }
+    }
 }
 
 class Node {
@@ -93,5 +106,4 @@ let l1 = new LinkedList();
 l1.addFirst('ke');
 l1.addLast('kek');
 l1.addLast('cke');
-l1.pop();
-console.log(l1.contains("cke"));
+console.log(l1.find("kekk"));
