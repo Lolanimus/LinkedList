@@ -34,6 +34,21 @@ class LinkedList {
             return tempNode;
         }
     }
+
+    getSize() {
+        let size = 0;
+        if (this.head == null) {
+            return size;
+        } else {
+            size = 1;
+            let tempNode = this.head;
+            while (tempNode.nextNode != null) {
+                tempNode = tempNode.nextNode;
+                size++;
+            }
+            return size;
+        }
+    }
 }
 
 class Node {
@@ -47,4 +62,4 @@ let l1 = new LinkedList();
 l1.addFirst('ke');
 l1.addLast('kek');
 l1.addLast('cke');
-console.log(l1.getLast());
+console.log(l1.getSize());
