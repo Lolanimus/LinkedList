@@ -7,8 +7,8 @@ class LinkedList {
         if (this.head == null) return "List is empty";
     }
 
-    addFirst(data, nextNode) {
-        this.head = new Node(data, nextNode);
+    addFirst(value, nextNode) {
+        this.head = new Node(value, nextNode);
     }
 
     getFirst() {
@@ -16,13 +16,13 @@ class LinkedList {
         return this.head;
     }
 
-    addLast(data, nextNode) {
+    addLast(value, nextNode) {
         if (this.head == null) {
-            this.addFirst(data, nextNode);
+            this.addFirst(value, nextNode);
         } else {
             let tempNode = this.head;
             while (tempNode.nextNode != null) tempNode = tempNode.nextNode;
-            tempNode.nextNode = new Node(data, nextNode);
+            tempNode.nextNode = new Node(value, nextNode);
         }
     }
 
@@ -105,6 +105,20 @@ class LinkedList {
         string += "null";
         return string;
     }
+
+    insertAt(value, index) {
+        if (index == 0 || index < 0) {
+            let head = this.getFirst();
+            this.addFirst(value, head);
+        } else if (index > this.getSize()) {
+            this.addLast(value);
+        } else {
+            let beforeNode = this.at(index - 1);
+            let atNode = beforeNode.nextNode;
+            let newNode = new Node(value, atNode);
+            beforeNode.nextNode = newNode;
+        }
+    }
 }
 
 class Node {
@@ -116,6 +130,8 @@ class Node {
 
 let l1 = new LinkedList();
 l1.addFirst('ke');
-l1.addLast('kek');
 l1.addLast('cke');
+l1.addLast('ckek');
+l1.addLast('ckell');
+l1.insertAt('kesha', 5)
 console.log(l1.toString());
