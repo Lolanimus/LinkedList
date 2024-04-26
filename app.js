@@ -93,6 +93,18 @@ class LinkedList {
             return "There is no such a Node with the given value: " + value;
         }
     }
+
+    toString() {
+        let string = "";
+        let tempNode = this.head;
+        string = "( " + tempNode.data + " ) -> "; 
+        while (tempNode.nextNode != null) {
+            tempNode = tempNode.nextNode;
+            string += "( " + tempNode.data + " ) -> ";
+        }
+        string += "null";
+        return string;
+    }
 }
 
 class Node {
@@ -106,4 +118,4 @@ let l1 = new LinkedList();
 l1.addFirst('ke');
 l1.addLast('kek');
 l1.addLast('cke');
-console.log(l1.find("kekk"));
+console.log(l1.toString());
