@@ -3,16 +3,17 @@ class LinkedList {
         this.head = null;
     }
     
+    isEmpty() {
+        if (this.head == null) return "List is empty";
+    }
+
     addFirst(data, nextNode) {
         this.head = new Node(data, nextNode);
     }
 
     getFirst() {
-        if (this.head == null) {
-            return "List is empty";
-        } else {
-            return this.head;
-        }
+        this.isEmpty();
+        return this.head;
     }
 
     addLast(data, nextNode) {
@@ -51,11 +52,20 @@ class LinkedList {
     }
 
     at(index) {
-        if (this.head == null) return "List is empty";
+        this.isEmpty();
         let tempNode = this.head;
         for (let i = 0; i < index; i++) tempNode = tempNode.nextNode;
         if (tempNode == null) return "Out of Bounds";
         return tempNode;
+    }
+
+    pop() {
+        this.isEmpty();
+        let tempNode = this.head;
+        while (tempNode.nextNode.nextNode != null) tempNode = tempNode.nextNode;
+        tempNode.nextNode = tempNode;
+        tempNode.nextNode = null;
+
     }
 }
 
@@ -70,4 +80,5 @@ let l1 = new LinkedList();
 l1.addFirst('ke');
 l1.addLast('kek');
 l1.addLast('cke');
-console.log(l1.at(1));
+l1.pop();
+console.log(l1.getFirst());
