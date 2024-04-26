@@ -107,7 +107,7 @@ class LinkedList {
     }
 
     insertAt(value, index) {
-        if (index == 0 || index < 0) {
+        if (index <= 0) {
             let head = this.getFirst();
             this.addFirst(value, head);
         } else if (index > this.getSize()) {
@@ -117,6 +117,20 @@ class LinkedList {
             let atNode = beforeNode.nextNode;
             let newNode = new Node(value, atNode);
             beforeNode.nextNode = newNode;
+        }
+    }
+
+    removeAt(index) {
+        if (index <= 0) {
+            let head = this.getFirst();
+            this.addFirst(head.nextNode.data, head.nextNode.nextNode);
+        } else if (index > this.getSize()) {
+            let before = this.at(this.getSize() - 2);
+            before.nextNode = null;
+        } else {
+            let beforeNode = this.at(index - 1);
+            let afterNode = beforeNode.nextNode.nextNode;
+            beforeNode.nextNode = afterNode;
         }
     }
 }
@@ -133,5 +147,4 @@ l1.addFirst('ke');
 l1.addLast('cke');
 l1.addLast('ckek');
 l1.addLast('ckell');
-l1.insertAt('kesha', 5)
 console.log(l1.toString());
